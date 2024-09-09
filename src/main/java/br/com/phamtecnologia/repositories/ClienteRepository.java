@@ -15,7 +15,7 @@ public class ClienteRepository {
         
         String query = "INSERT INTO CLIENTE(nome, email, cpf, telefone, observacoes) VALUES(?,?,?,?,?)";
         
-        PreparedStatement statement = connection.PreparedStatement(query);
+        PreparedStatement statement = connection.prepareStatementreparedStatement(query);
         statement.setString(1, cliente.getNome());
         statement.setString(2, cliente.getEmail());
         statement.setString(3, cliente.getCpf());
@@ -28,7 +28,21 @@ public class ClienteRepository {
     }
 
     public void update(Cliente cliente) throws Exception {
-        //  TODO
+        Connection connection = ConnectionFactory.getConnection();
+
+        String query = "UPDATE CLIENTE SET NOME=?, EMAIL=?, CPF=?, TELEFONE=?, OBSERVACOES=? WHERE=idcliente";
+
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, cliente.getNome());
+        statement.setString(2, cliente.getEmail());
+        statement.setString(3, cliente.getCpf());
+        statement.setString(4, clienet.getTelefone());
+        statement.setString(5, cliente.getObservacoes());
+        statement.setInt(6, cliente.getIdCliente());
+        statement.execute();
+
+        statement.close();
+
     }
 
     public void delete(Cliente cliente) throws Exception {
