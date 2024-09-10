@@ -23,14 +23,14 @@ public class ClienteRepository {
         statement.setString(5, cliente.getObservacoes());
         statement.executeUpdate();
 
-        statement.close();
+        connection.close();
 
     }
 
     public void update(Cliente cliente) throws Exception {
         Connection connection = ConnectionFactory.getConnection();
 
-        String query = "UPDATE CLIENTE SET NOME=?, EMAIL=?, CPF=?, TELEFONE=?, OBSERVACOES=? WHERE=idcliente";
+        String query = "UPDATE CLIENTE SET NOME=?, EMAIL=?, CPF=?, TELEFONE=?, OBSERVACOES=? WHERE idcliente=?";
 
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, cliente.getNome());
@@ -41,12 +41,22 @@ public class ClienteRepository {
         statement.setInt(6, cliente.getIdCliente());
         statement.execute();
 
-        statement.close();
+        connection.close();
 
     }
 
     public void delete(Cliente cliente) throws Exception {
-        //  TODO
+        
+        Connection connection = ConnectionFactory.getConnection();
+
+        String query = "DELETE FROM CLIENTE WHERE idcliente=?";
+
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, cliente.getIdCliente());
+        statement.execute();
+
+        connection.close();
+
     }
 
     public List<Cliente> findALL() throws Exception {
