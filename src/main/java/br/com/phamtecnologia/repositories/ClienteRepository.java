@@ -55,6 +55,7 @@ public class ClienteRepository {
 
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setInt(1, cliente.getIdCliente());
+        statement.setInt(1, cliente.getIdCliente());
         statement.execute();
 
         connection.close();
