@@ -1,4 +1,4 @@
-package br.com.phamtecnologia.api_clientes.entities;
+package br.com.phamtecnologia.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,12 +11,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Cliente {
+public class ClientePostDto {
 
-    private Integer idCliente;
     private String nome;
     private String cpf;
-    private String email;
+    private String emai;
     private String telefone;
     private String observacoes;
 

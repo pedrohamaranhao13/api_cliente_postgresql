@@ -1,4 +1,4 @@
-package main.java.br.com.phamtecnologia.factories;
+package br.com.phamtecnologia.factories;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

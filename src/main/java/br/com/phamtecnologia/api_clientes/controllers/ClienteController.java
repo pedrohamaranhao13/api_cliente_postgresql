@@ -4,17 +4,37 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.phamtecnologia.dtos.ClientePostDto;
+import br.com.phamtecnologia.entities.Cliente;
+import br.com.phamtecnologia.repositories.ClienteRepository;
 
 @RestController
 @RequestMapping(value = "/api/clientes")
 public class ClienteController {
 
     @PostMapping
-    public String post() {
-        //TODO
-        return null;
+    public String post(@RequestBody ClientePostDto dto) {
+        
+        try {
+            
+            Cliente cliente = new Cliente();
+            cliente.setNome(dto.getNome());
+            cliente.setCpf(dto.getCpf());
+            cliente.setEmail(dto.getEmai());
+            cliente.setTelefone(dto.getTelefone());
+            cliente.setObservacoes(dto.getObservacoes());
+
+            ClienteRepository clienteRepository = new ClienteRepository();
+            clienteRepository.create(cliente);
+
+            return "Cliente cadastrado com sucesso.";
+        } catch (Exception e) {
+            return "Erro " + e.getMessage();
+        } 
     }
 
     @PutMapping
@@ -35,4 +55,3 @@ public class ClienteController {
         return null;
     }
 }
-

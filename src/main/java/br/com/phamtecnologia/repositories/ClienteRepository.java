@@ -1,4 +1,4 @@
-package main.java.br.com.phamtecnologia.repositories;
+package br.com.phamtecnologia.repositories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.br.com.phamtecnologia.entities.Cliente;
-import main.java.br.com.phamtecnologia.factories.ConnectionFactory;
+import br.com.phamtecnologia.entities.Cliente;
+import br.com.phamtecnologia.factories.ConnectionFactory;
 
 public class ClienteRepository {
 
@@ -17,7 +17,7 @@ public class ClienteRepository {
         
         String query = "INSERT INTO CLIENTE(nome, email, cpf, telefone, observacoes) VALUES(?,?,?,?,?)";
         
-        PreparedStatement statement = connection.prepareStatementreparedStatement(query);
+        PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, cliente.getNome());
         statement.setString(2, cliente.getEmail());
         statement.setString(3, cliente.getCpf());
@@ -38,7 +38,7 @@ public class ClienteRepository {
         statement.setString(1, cliente.getNome());
         statement.setString(2, cliente.getEmail());
         statement.setString(3, cliente.getCpf());
-        statement.setString(4, clienet.getTelefone());
+        statement.setString(4, cliente.getTelefone());
         statement.setString(5, cliente.getObservacoes());
         statement.setInt(6, cliente.getIdCliente());
         statement.execute();
@@ -94,7 +94,7 @@ public class ClienteRepository {
         
         Connection connection = ConnectionFactory.getConnection();
 
-        Sring query = "SELECT * FROM CLIENTE WHERE idcliente=?";
+        String query = "SELECT * FROM CLIENTE WHERE idcliente=?";
 
         PreparedStatement statement = connection.prepareStatement(query);
         ResultSet resultSet = statement.executeQuery();
