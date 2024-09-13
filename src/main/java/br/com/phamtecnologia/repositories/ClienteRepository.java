@@ -62,7 +62,7 @@ public class ClienteRepository {
 
     }
 
-    public List<Cliente> findALL() throws Exception {
+    public List<Cliente> findAll() throws Exception {
         
         Connection connection = ConnectionFactory.getConnection();
 
